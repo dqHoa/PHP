@@ -26,6 +26,12 @@ $routes = [
     'controller' => 'PhieuDangKyController',
     'action' => 'editPhieuDangKy'
   ],
+
+  'update' => [
+    'controller' => 'PhieuDangKyController',
+    'action' => 'updatePhieuDangKy'
+  ],
+
   'register' => [
     'controller' => 'AccountController',
     'action' => 'register'

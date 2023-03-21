@@ -35,14 +35,19 @@ class PhieuDangKy {
     return $stmt->execute();
     
   }
-  public static function update($masophieu, $hoten, $masinhvien, $chuyennganh, $congty) {
+  public static function update($hoten, $masinhvien, $chuyennganh, $congty, $maphieu) {
     global $pdo;
-    $stmt = $pdo->prepare('UPDATE phieudangkythuctap SET HoTen = :hoten, MaSinhVien = :masinhvien, ChuyenNganh = :chuyennganh, CongTy = :congty WHERE MaSoPhieu = :masophieu');
+    
+    $sql = "UPDATE phieudangkythuctap SET HoTen =:hoten, MaSinhVien =:masinhvien, ChuyenNganh =:chuyennganh, CongTy=:congty WHERE MaSoPhieu= :maphieu";
+    $stmt = $pdo->prepare($sql);
+   
+
     $stmt->bindParam(':hoten', $hoten);
     $stmt->bindParam(':masinhvien', $masinhvien);
     $stmt->bindParam(':chuyennganh', $chuyennganh);
     $stmt->bindParam(':congty', $congty);
-    $stmt->bindParam(':mapsohieu', $masophieu);
+    $stmt->bindParam(':maphieu', $maphieu);
+
     return $stmt->execute();
   }
 }
