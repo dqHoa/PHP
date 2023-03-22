@@ -4,8 +4,7 @@ $(document).on('click', '.delete-phieu', function () {
         type: 'POST',
         url: '?route=delete-ajax',
         data: { id: maSoPhieu },
-        success: function (response) {
-            debugger;
+        success: function (response) {            
             var data = JSON.parse(response);
             if (data.success) {
                 $('#phieu-container div#' + maSoPhieu).remove();
@@ -19,3 +18,29 @@ $(document).on('click', '.delete-phieu', function () {
     });
 });
 
+$('.edit-phieu').click(function() {
+    var maSoPhieu = $(this).data('id');
+    $.ajax({
+      url: '?route=edit-ajax',
+      type: 'POST',
+      data: { id: maSoPhieu },     
+      success: function (response) {            
+        var data = JSON.parse(response);
+        if (data.success) {
+          // Populate the popup form with the data returned from the server
+          $('#hoTen').val(data.hoTen);
+          $('#maSinhVien').val(data.maSinhVien);
+          $('#chuyenNganh').val(data.chuyenNganh);
+          $('#congTy').val(data.congTy);
+  
+          // Show the popup form
+          $('#edit-modal').modal('show');
+        } else {
+          alert('Failed to retrieve data.');
+        }
+      },
+      error: function(xhr, status, error) {
+        alert('Failed to retrieve data: ' + error);
+      }
+    });
+  });

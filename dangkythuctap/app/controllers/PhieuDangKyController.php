@@ -45,21 +45,6 @@ class PhieuDangKyController
     }
     function editPhieuDangKy()
     {
-
-        // $masophieu = $_GET['masophieu'];
-        // if (isset($masophieu)) {
-
-        //     $phieudangky = PhieuDangKy::getAll();
-        //     if (empty($phieudangky)) {
-        //         header('Location: ?route=not-found');
-        //         exit;
-        //     }
-        //     require_once(('../app/views/edit.php'));
-        // } else {
-        //     header('Location: ?route=not-found');
-        //     exit;
-        // }
-
         $phieudangky = PhieuDangKy::getAll();
         require_once('../app/views/edit.php');
 
@@ -173,15 +158,21 @@ class PhieuDangKyController
         }
     }
     function editAjax()
-    {
-        if ($_SERVER['REQUEST_METHOD'] == "POST") {
-            $maSoPhieu = $_POST['id'];
-            $hoTen = $_POST['hoten'];
-            $maSinhVien = $_POST['masinhvien'];
-            $chuyenNganh = $_POST['chuyennganh'];
-            $congTy = $_POST['congty'];
-            $isSuccess = PhieuDangKy::update($maSoPhieu, $hoTen, $maSinhVien, $chuyenNganh, $congTy);
-            echo json_encode(['success' => $isSuccess]);
+{
+    if ($_SERVER['REQUEST_METHOD'] == "POST") {
+        $maSoPhieu = $_POST['id'];
+        $phieu = PhieuDangKy::getById($maSoPhieu);
+        if ($phieu) {
+            echo json_encode([
+              'success' => true,
+              'hoTen' => $phieu->hoTen,
+              'maSinhVien' => $phieu->maSinhVien,
+              'chuyenNganh' => $phieu->chuyenNganh,
+              'congTy' => $phieu->congTy
+            ]);
+        } else {
+            echo json_encode(['success' => false]);
         }
     }
+}
 }
