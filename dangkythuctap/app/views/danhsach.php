@@ -27,7 +27,7 @@ include_once('../app/views/shares/header.php')
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="?route=update" method="post">
+                                <form id="updateForm" method="post">
 
                                     <input type="hidden" id="MaSoPhieu" name="MaSoPhieu"
                                         value="<?= $phieu['MaSoPhieu']; ?>" required>

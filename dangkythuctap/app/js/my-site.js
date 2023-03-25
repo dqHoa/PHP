@@ -44,3 +44,32 @@ $('.edit-phieu').click(function() {
       }
     });
   });
+
+  $(document).ready(function(){
+    $('#updateForm').submit(function(event) {
+      // prevent default form submission action
+      event.preventDefault();
+  
+      var maSoPhieu = $(this).data('id');
+      // get form data
+      var formData = $(this).serialize();
+  
+      // send ajax request to update data
+      $.ajax({
+        type: 'POST',
+        url: '?route=edit-ajax',
+        data: formData,
+        success: function(response) {
+          // handle successful response
+          console.log(response);
+          $('#exampleModal-' + maSoPhieu).load('#exampleModal-' + maSoPhieu);
+          location.reload();
+        },
+        error: function(error) {
+          // handle error response
+          console.log(error);
+        }
+      });
+    });
+  });
+  
