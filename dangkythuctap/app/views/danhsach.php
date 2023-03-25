@@ -7,14 +7,14 @@ include_once('../app/views/shares/header.php')
         <div class="card" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title"><?= $phieu['MaSoPhieu'] ?></h5>
-                <p class="card-text"><?= $phieu['HoTen'] ?> - <?= $phieu['MaSinhVien'] ?> - <?= $phieu['ChuyenNganh'] ?> - <?= $phieu['CongTy'] ?> - <?= $phieu['SoTien'] ?>
+                <p class="card-text" id="edit"><?= $phieu['HoTen'] ?> - <?= $phieu['MaSinhVien'] ?> - <?= $phieu['ChuyenNganh'] ?>
                 </p>
                 <a href="?route=add-cart&masophieu=<?= $phieu['MaSoPhieu'] ?>" class="btn btn-primary">Add To Cart</a>
                 <!-- delete Ajax -->
                 <button class="btn btn-danger delete-phieu" data-id="<?= $phieu['MaSoPhieu'] ?>">Delete</button>
                 <!-- edit Ajax -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal-<?= $phieu['MaSoPhieu'] ?>">
+                <button type="button" class="btn btn-primary edit-phieu" data-id="<?= $phieu['MaSoPhieu'] ?>" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">
                     Edit
                 </button>
                 <div class="modal fade" id="exampleModal-<?= $phieu['MaSoPhieu'] ?>" tabindex="-1"
@@ -27,7 +27,7 @@ include_once('../app/views/shares/header.php')
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form id="updateForm" method="post">
+                                <form id="editForm-<?= $phieu['MaSoPhieu'] ?>" method="post">
 
                                     <input type="hidden" id="MaSoPhieu" name="MaSoPhieu"
                                         value="<?= $phieu['MaSoPhieu']; ?>" required>
@@ -53,16 +53,11 @@ include_once('../app/views/shares/header.php')
                                         <input type="text" class="form-control" id="congty" name="CongTy"
                                             value="<?= $phieu['CongTy']; ?>" required>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="congty">Gia Tien</label>
-                                        <input type="text" class="form-control" id="sotien" name="SoTien"
-                                            value="<?= $phieu['SoTien']; ?>" required>
-                                    </div>
                                     <br />
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                        <button type="button" class="btn btn-primary update-phieu" data-id="<?= $phieu['MaSoPhieu'] ?>">Save changes</button>
                                     </div>
 
                                 </form>
@@ -77,14 +72,6 @@ include_once('../app/views/shares/header.php')
     </div>
     <?php endforeach ?>
 </div>
-<script>
-var myModal = document.getElementById('myModal')
-var myInput = document.getElementById('myInput')
-
-myModal.addEventListener('shown.bs.modal', function() {
-    myInput.focus()
-})
-</script>
 <?php
 include_once('../app/views/shares/footer.php')
   ?>

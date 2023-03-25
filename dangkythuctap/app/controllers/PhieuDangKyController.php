@@ -21,9 +21,8 @@ class PhieuDangKyController
         $masinhvien = $_POST['mssv'];
         $chuyennganh = $_POST['chuyennganh'];
         $congty = $_POST['congty'];
-        $sotien = $_POST['sotien'];
 
-        $isSuccess = PhieuDangKy::create($hoten, $masinhvien, $chuyennganh, $congty, $sotien);
+        $isSuccess = PhieuDangKy::create($hoten, $masinhvien, $chuyennganh, $congty);
         if ($isSuccess)
             // Redirect to homepage
             header('Location: ?route=danh-sach');
@@ -50,6 +49,15 @@ class PhieuDangKyController
         require_once('../app/views/edit.php');
 
     }
+    function editAjax()
+    {
+           
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+            $maSoPhieu = $_POST['id'];
+            $isSuccess = PhieuDangKy::find($maSoPhieu);
+            echo json_encode(['success' => $isSuccess]);
+        } 
+    }
 
     function updatePhieuDangKy()
     {
@@ -58,8 +66,7 @@ class PhieuDangKyController
         $chuyennganh = $_REQUEST['ChuyenNganh'];
         $congty = $_REQUEST['CongTy'];
         $maphieu = $_REQUEST['MaSoPhieu'];
-        $sotien = $_REQUEST['SoTien'];
-        $isSuccess = PhieuDangKy::update($hoten, $masinhvien, $chuyennganh, $congty, $maphieu, $sotien);
+        $isSuccess = PhieuDangKy::update($hoten, $masinhvien, $chuyennganh, $congty, $maphieu);
         if ($isSuccess)
             // Redirect to homepage
             header('Location: ?route=danh-sach');
@@ -159,21 +166,20 @@ class PhieuDangKyController
             echo json_encode(['success' => $isSuccess]);
         }
     }
-    function editAjax()
-    {
+    function updateAjax()
+{
+    
+    
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $masophieu = $_POST['MaSoPhieu'];
+            $masophieu = $_POST['MaSoPhieu'];            
             $hoten = $_POST['HoTen'];
             $masinhvien = $_POST['MaSinhVien'];
             $chuyenhnganh = $_POST['ChuyenNganh'];
             $congty = $_POST['CongTy'];
-            $sotien = $_POST['SoTien'];
-            $isSuccess = PhieuDangKy::update($hoten, $masinhvien, $chuyenhnganh, $congty, $masophieu, $sotien);
+            $isSuccess = PhieuDangKy::update($hoten, $masinhvien, $chuyenhnganh, $congty, $masophieu);
             echo json_encode(['success' => $isSuccess]);
         }
-    }
-
-    function thanhtoan(){
-        
-    }
+    
+    
+}
 }

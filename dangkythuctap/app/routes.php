@@ -76,4 +76,8 @@ $routes = [
     'controller' => 'PhieuDangKyController',
     'action' => 'editAjax'
   ],
+  'update-ajax' => [
+    'controller' => 'PhieuDangKyController',
+    'action' => 'updateAjax'
+  ],
 ];

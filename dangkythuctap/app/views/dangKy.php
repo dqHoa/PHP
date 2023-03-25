@@ -25,10 +25,6 @@ include_once('../app/views/shares/header.php');
             <label for="congty">Cong ty</label>
             <input type="text" class="form-control" id="congty" name="congty" required>
           </div>
-          <div class="form-group">
-            <label for="congty">Gia Tien</label>
-            <input type="text" class="form-control" id="sotien" name="sotien" required>
-          </div>
           <br />
           <button type="submit" class="btn btn-primary w-100">Gui Phieu Dang Ky</button>
         </form>

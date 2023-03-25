@@ -7,17 +7,21 @@ class PhieuDangKy {
   }
   public static function find($masophieu) {
     global $pdo;
+    
+    $sql = "SELECT * FROM phieudangkythuctap WHERE MaSoPhieu = :masophieu";
+    $stmt = $pdo->prepare($sql);
+   
 
-    $stmt = $pdo->prepare('SELECT * FROM phieudangkythuctap WHERE MaSoPhieu = :masophieu');
     $stmt->bindParam(':masophieu', $masophieu);
     $stmt->execute();
+
     return $stmt->fetch(PDO::FETCH_ASSOC);
   }
   //tao phieu dang ky
-  public static function create($hoten, $masinhvien, $chuyennganh, $congty, $sotien) {
+  public static function create($hoten, $masinhvien, $chuyennganh, $congty) {
     global $pdo;
     
-    $sql = "INSERT INTO phieudangkythuctap (HoTen, MaSinhVien, ChuyenNganh, CongTy, SoTien) VALUES (:hoten, :masinhvien, :chuyennganh, :congty, :sotien)";
+    $sql = "INSERT INTO phieudangkythuctap (HoTen, MaSinhVien, ChuyenNganh, CongTy) VALUES (:hoten, :masinhvien, :chuyennganh, :congty)";
     $stmt = $pdo->prepare($sql);
    
 
@@ -25,7 +29,6 @@ class PhieuDangKy {
     $stmt->bindParam(':masinhvien', $masinhvien);
     $stmt->bindParam(':chuyennganh', $chuyennganh);
     $stmt->bindParam(':congty', $congty);
-    $stmt->bindParam(':sotien', $sotien);
 
     return $stmt->execute();
   }
@@ -36,10 +39,10 @@ class PhieuDangKy {
     return $stmt->execute();
     
   }
-  public static function update($hoten, $masinhvien, $chuyennganh, $congty, $maphieu, $sotien) {
+  public static function update($hoten, $masinhvien, $chuyennganh, $congty, $maphieu) {
     global $pdo;
     
-    $sql = "UPDATE phieudangkythuctap SET HoTen =:hoten, MaSinhVien =:masinhvien, ChuyenNganh =:chuyennganh, CongTy=:congty, SoTien=:sotien WHERE MaSoPhieu= :maphieu";
+    $sql = "UPDATE phieudangkythuctap SET HoTen =:hoten, MaSinhVien =:masinhvien, ChuyenNganh =:chuyennganh, CongTy=:congty WHERE MaSoPhieu= :maphieu";
     $stmt = $pdo->prepare($sql);
    
 
@@ -48,7 +51,6 @@ class PhieuDangKy {
     $stmt->bindParam(':chuyennganh', $chuyennganh);
     $stmt->bindParam(':congty', $congty);
     $stmt->bindParam(':maphieu', $maphieu);
-    $stmt->bindParam(':sotien', $sotien);
 
     return $stmt->execute();
   }
