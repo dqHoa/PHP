@@ -21,8 +21,9 @@ class PhieuDangKyController
         $masinhvien = $_POST['mssv'];
         $chuyennganh = $_POST['chuyennganh'];
         $congty = $_POST['congty'];
+        $sotien = $_POST['sotien'];
 
-        $isSuccess = PhieuDangKy::create($hoten, $masinhvien, $chuyennganh, $congty);
+        $isSuccess = PhieuDangKy::create($hoten, $masinhvien, $chuyennganh, $congty, $sotien);
         if ($isSuccess)
             // Redirect to homepage
             header('Location: ?route=danh-sach');
@@ -57,7 +58,8 @@ class PhieuDangKyController
         $chuyennganh = $_REQUEST['ChuyenNganh'];
         $congty = $_REQUEST['CongTy'];
         $maphieu = $_REQUEST['MaSoPhieu'];
-        $isSuccess = PhieuDangKy::update($hoten, $masinhvien, $chuyennganh, $congty, $maphieu);
+        $sotien = $_REQUEST['SoTien'];
+        $isSuccess = PhieuDangKy::update($hoten, $masinhvien, $chuyennganh, $congty, $maphieu, $sotien);
         if ($isSuccess)
             // Redirect to homepage
             header('Location: ?route=danh-sach');
@@ -165,8 +167,13 @@ class PhieuDangKyController
             $masinhvien = $_POST['MaSinhVien'];
             $chuyenhnganh = $_POST['ChuyenNganh'];
             $congty = $_POST['CongTy'];
-            $isSuccess = PhieuDangKy::update($hoten, $masinhvien, $chuyenhnganh, $congty, $masophieu);
+            $sotien = $_POST['SoTien'];
+            $isSuccess = PhieuDangKy::update($hoten, $masinhvien, $chuyenhnganh, $congty, $masophieu, $sotien);
             echo json_encode(['success' => $isSuccess]);
         }
+    }
+
+    function thanhtoan(){
+        
     }
 }

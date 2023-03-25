@@ -7,7 +7,7 @@ include_once('../app/views/shares/header.php')
         <div class="card" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title"><?= $phieu['MaSoPhieu'] ?></h5>
-                <p class="card-text"><?= $phieu['HoTen'] ?> - <?= $phieu['MaSinhVien'] ?> - <?= $phieu['ChuyenNganh'] ?>
+                <p class="card-text"><?= $phieu['HoTen'] ?> - <?= $phieu['MaSinhVien'] ?> - <?= $phieu['ChuyenNganh'] ?> - <?= $phieu['CongTy'] ?> - <?= $phieu['SoTien'] ?>
                 </p>
                 <a href="?route=add-cart&masophieu=<?= $phieu['MaSoPhieu'] ?>" class="btn btn-primary">Add To Cart</a>
                 <!-- delete Ajax -->
@@ -52,6 +52,11 @@ include_once('../app/views/shares/header.php')
                                         <label for="congty">Cong ty</label>
                                         <input type="text" class="form-control" id="congty" name="CongTy"
                                             value="<?= $phieu['CongTy']; ?>" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="congty">Gia Tien</label>
+                                        <input type="text" class="form-control" id="sotien" name="SoTien"
+                                            value="<?= $phieu['SoTien']; ?>" required>
                                     </div>
                                     <br />
                                     <div class="modal-footer">
