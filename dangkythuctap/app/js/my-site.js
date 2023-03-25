@@ -18,35 +18,6 @@ $(document).on('click', '.delete-phieu', function () {
     });
 });
 
-<<<<<<< .mine
-$('.edit-phieu').click(function() {
-    var maSoPhieu = $(this).data('id');
-    $.ajax({
-      url: '?route=edit-ajax',
-      type: 'POST',
-      data: { id: maSoPhieu },     
-      success: function (response) {            
-        var data = JSON.parse(response);
-        if (data.success) {
-          // Populate the popup form with the data returned from the server
-          $('#hoTen').val(data.hoTen);
-          $('#maSinhVien').val(data.maSinhVien);
-          $('#chuyenNganh').val(data.chuyenNganh);
-          $('#congTy').val(data.congTy);
-  
-          // Show the popup form
-          $('#edit-modal').modal('show');
-        } else {
-          alert('Failed to retrieve data.');
-        }
-      },
-      error: function(xhr, status, error) {
-        alert('Failed to retrieve data: ' + error);
-      }
-    });
-  });
-=======
-
 function showPopup() {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
@@ -62,14 +33,3 @@ function showPopup() {
 function hidePopup() {
     document.getElementById("popup").style.display = "none";
 }
-
-
-
-
-
-
-
-
-
-
->>>>>>> .theirs

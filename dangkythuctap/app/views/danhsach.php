@@ -13,14 +13,7 @@ include_once('../app/views/shares/header.php')
                 <!-- delete Ajax -->
                 <button class="btn btn-danger delete-phieu" data-id="<?= $phieu['MaSoPhieu'] ?>">Delete</button>
                 <!-- edit Ajax -->
-<<<<<<< .mine
-                <button class="btn btn-primary edit-phieu" data-id="<?= $phieu['MaSoPhieu'] ?>" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
-
-=======
-                <button class="btn btn-primary edit-phieu" data-id="<?= $phieu['MaSoPhieu'] ?>" data-toggle="modal" data-target="#editModal" onclick="showPopup()">Edit</button>
-
->>>>>>> .theirs
-                
+                <button class="btn btn-primary edit-phieu" data-id="<?= $phieu['MaSoPhieu'] ?>" data-toggle="modal" data-target="#editModal" onclick="showPopup()">Edit</button>  
             </div>
         </div>
     </div>
