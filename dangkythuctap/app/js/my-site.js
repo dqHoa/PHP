@@ -18,6 +18,7 @@ $(document).on('click', '.delete-phieu', function () {
     });
 });
 
+<<<<<<< .mine
 $('.edit-phieu').click(function() {
     var maSoPhieu = $(this).data('id');
     $.ajax({
@@ -44,3 +45,31 @@ $('.edit-phieu').click(function() {
       }
     });
   });
+=======
+
+function showPopup() {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("popup-content").innerHTML = this.responseText;
+            document.getElementById("popup").style.display = "block";
+        }
+    };
+    xmlhttp.open("GET", "popup.php", true);
+    xmlhttp.send();
+}
+
+function hidePopup() {
+    document.getElementById("popup").style.display = "none";
+}
+
+
+
+
+
+
+
+
+
+
+>>>>>>> .theirs
