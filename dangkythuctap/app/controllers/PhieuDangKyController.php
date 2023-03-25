@@ -159,20 +159,14 @@ class PhieuDangKyController
     }
     function editAjax()
 {
-    if ($_SERVER['REQUEST_METHOD'] == "POST") {
-        $maSoPhieu = $_POST['id'];
-        $phieu = PhieuDangKy::getById($maSoPhieu);
-        if ($phieu) {
-            echo json_encode([
-              'success' => true,
-              'hoTen' => $phieu->hoTen,
-              'maSinhVien' => $phieu->maSinhVien,
-              'chuyenNganh' => $phieu->chuyenNganh,
-              'congTy' => $phieu->congTy
-            ]);
-        } else {
-            echo json_encode(['success' => false]);
-        }
-    }
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $maSoPhieu = $_POST['MaSoPhieu'];
+        $hoTen = $_POST['HoTen'];
+        $maSinhVien = $_POST['MaSinhVien'];
+        $chuyenNganh = $_POST['ChuyenNganh'];
+        $congTy = $_POST['CongTy'];
+        $isSuccess = PhieuDangKy::update($hoten, $masinhvien, $chuyennganh, $congty, $maphieu);
+        echo json_encode(['success' => $isSuccess]);
+      }
 }
 }

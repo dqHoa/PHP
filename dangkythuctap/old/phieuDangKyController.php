@@ -30,9 +30,4 @@ try {
    echo "Dang ky loi!!!";
    exit ();
 }
-
-
-
-
-
 ?>
