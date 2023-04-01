@@ -76,4 +76,40 @@ $routes = [
     'controller' => 'PhieuDangKyController',
     'action' => 'editAjax'
   ],
+
+  //admin
+  'admin' => [
+    'controller' => 'ProductController',
+    'action' => 'index'
+  ],
+
+  'category' => [
+    'controller' => 'CategoryController',
+    'action' => 'showCategory'
+  ],
+
+  'product' => [
+    'controller' => 'ProductController',
+    'action' => 'showProduct'
+  ],
+
+  'create-category' => [
+    'controller' => 'CategoryController',
+    'action' => 'createCategory'
+  ],
+
+  'edit-category' => [
+    'controller' => 'CategoryController',
+    'action' => 'editCategory'
+  ],
+
+  'update-category' => [
+    'controller' => 'CategoryController',
+    'action' => 'updateCategory'
+  ],
+
+  'delete-category' => [
+    'controller' => 'CategoryController',
+    'action' => 'deleteCategory'
+  ],
 ];

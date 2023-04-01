@@ -161,7 +161,7 @@ class PhieuDangKyController
 {
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $maSoPhieu = $_POST['id'];
-        $phieu = PhieuDangKy::getById($maSoPhieu);
+        $phieu = PhieuDangKy::find($maSoPhieu);
         if ($phieu) {
             echo json_encode([
               'success' => true,

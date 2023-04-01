@@ -1,17 +1,18 @@
 <?php
 class User
 {
-  public static function create($fullName, $userName, $hashPass)
+  public static function create($fullName, $userName, $hashPass, $email)
   {
     global $pdo;
 
-    $sql = "INSERT INTO user (UserName, Pass, FullName) VALUES (:userName, :hashPass, :fullName)";
+    $sql = "INSERT INTO user (UserName, Pass, FullName, Email) VALUES (:userName, :hashPass, :fullName :email)";
     $stmt = $pdo->prepare($sql);
 
 
     $stmt->bindParam(':userName', $userName);
     $stmt->bindParam(':hashPass', $hashPass);
     $stmt->bindParam(':fullName', $fullName);
+    $stmt->bindParam(':email', $email);
 
     return $stmt->execute();
   }
