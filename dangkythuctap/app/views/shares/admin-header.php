@@ -29,6 +29,9 @@
                             <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="?route=category">Categories</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="?route=product">Products</a>
                         </li>
                         <li class="nav-item">

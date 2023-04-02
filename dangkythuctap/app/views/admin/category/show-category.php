@@ -26,8 +26,9 @@ include_once('../app/views/shares/admin-header.php');
                         <?= $category['CategoryName'] ?>
                     </td>
                     <td>
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#editCategoryModal-<?= $category['CategoryId'] ?>"
+                        <button class="btn btn-primary edit-category" data-toggle="modal" data-target="#editCategoryModal"
                             data-id="<?= $category['CategoryId']; ?>" data-name="<?= $category['CategoryId']; ?>">Edit</button>
+
                         <button data-toggle="modal" data-target="#deleteCategoryModal"
                             class="btn btn-danger delete-category-btn"
                             data-id="<?= $category['CategoryId']; ?>">Delete</button>
@@ -82,7 +83,7 @@ include_once('../app/views/shares/admin-header.php');
             <label for="editCategoryName">Category Name</label>
             <input type="text" class="form-control" id="editCategoryName" name="CategoryName" value="<?= $category['CategoryName'] ?>">
           </div>
-          <button type="submit" class="btn btn-primary">Save changes</button>
+          <button type="submit" class="btn btn-primary update-category" data-id="<?= $category['CategoryId'] ?>">Save changes</button>
         </form>
       </div>
     </div>

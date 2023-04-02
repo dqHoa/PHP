@@ -49,23 +49,23 @@ $routes = [
     'action' => 'editAvatar'
   ],
   'add-cart' => [
-    'controller' => 'PhieuDangKyController',
+    'controller' => 'ProductController',
     'action' => 'addCart'
   ],
   'view-cart' => [
-    'controller' => 'PhieuDangKyController',
+    'controller' => 'ProductController',
     'action' => 'viewCart'
   ],
   'empty-cart' => [
-    'controller' => 'PhieuDangKyController',
+    'controller' => 'ProductController',
     'action' => 'emptyCart'
   ],
   'delete-cart-item' => [
-    'controller' => 'PhieuDangKyController',
+    'controller' => 'ProductController',
     'action' => 'deleteCartItem'
   ],
   'cart-update' => [
-    'controller' => 'PhieuDangKyController',
+    'controller' => 'ProductController',
     'action' => 'updateCart'
   ],
   'delete-ajax' => [
@@ -88,11 +88,6 @@ $routes = [
     'action' => 'showCategory'
   ],
 
-  'product' => [
-    'controller' => 'ProductController',
-    'action' => 'showProduct'
-  ],
-
   'create-category' => [
     'controller' => 'CategoryController',
     'action' => 'createCategory'
@@ -112,4 +107,40 @@ $routes = [
     'controller' => 'CategoryController',
     'action' => 'deleteCategory'
   ],
+
+  'product' => [
+    'controller' => 'ProductController',
+    'action' => 'showProduct'
+  ],
+
+  'add-product' => [
+    'controller' => 'ProductController',
+    'action' => 'addProduct'
+  ],
+
+  'create-product' => [
+    'controller' => 'ProductController',
+    'action' => 'createProduct'
+  ],
+
+  'edit-product' => [
+    'controller' => 'ProductController',
+    'action' => 'editProduct'
+  ],
+
+  'update-product' => [
+    'controller' => 'ProductController',
+    'action' => 'updateProduct'
+  ],
+
+  'delete-product' => [
+    'controller' => 'ProductController',
+    'action' => 'deleteProduct'
+  ],
+
+  'search' => [
+    'controller' => 'ProductController',
+    'action' => 'search'
+  ],
+
 ];

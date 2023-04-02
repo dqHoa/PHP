@@ -35,6 +35,10 @@ function hidePopup() {
 }
 
 $(document).ready(function () {
+    $('#cartTable').DataTable();
+});
+
+$(document).ready(function () {
     $('#categoryTable').DataTable();
 });
 
@@ -75,32 +79,88 @@ $(document).on('click', '.delete-category-btn', function () {
 });
 
 // Edit Category Modal
-$(document).ready(function(){
-    $('#editCategoryForm').submit(function(event) {
-      // prevent default form submission action
-      event.preventDefault();
-  
-      var categoryId = $(this).data('id');
-      // get form data
-      var formData = $(this).serialize();
-  
-      // send ajax request to update data
-      $.ajax({
+$(document).on('click', '.edit-category', function () {
+    var categoryId = $(this).data('id');
+    $.ajax({
         type: 'POST',
-        url: '?route=update-category',
-        data: formData,
-        success: function(response) {
-          // handle successful response
-          console.log(response);
-          $('#editCategoryModal-' + categoryId).load('#editCategoryModal-' + categoryId);
-        //   location.reload();
+        url: '?route=edit-category',
+        data: { id: categoryId },
+
+        success: function (response) {
+
+            console.log(response);
+            $("#editCategoryModal-" + categoryId).modal("show");
+
         },
-        error: function(error) {
-          // handle error response
-          console.log(error);
+        error: function (xhr) {
+            console.log(xhr.responseText);
         }
-      });
     });
-  });
-  
+});
+
+$(document).on('click', '.update-phieu', function () {
+    var maSoPhieu = $(this).data('id');
+    var data = $('#editForm-' + maSoPhieu).serialize();
+    debugger
+    $.ajax({
+        type: 'POST',
+        url: '?route=update-ajax',
+        data: data,
+        success: function (response) {
+            var data = JSON.parse(response);
+            debugger
+            if (data.success) {
+                ;
+                $("#exampleModal-" + maSoPhieu).modal("hide");
+                $('#phieu-container div#' + maSoPhieu).load('#phieu-container div#' + maSoPhieu);
+            } else {
+                alert(" không thành công!");
+            }
+        },
+        error: function (xhr) {
+            console.log(xhr.responseText);
+        }
+    });
+});
+
+$(document).ready(function () {
+    $('#productTable').DataTable();
+});
+
+
+// Create Product Modal
+function addProduct() {
+    var formData = $("#addProductForm").serialize();
+    $.ajax({
+        type: "POST",
+        url: "?route=create-product",
+        data: formData,
+        success: function (response) {
+            console.log(response);
+            $("#addProductModal").modal("hide");
+            location.reload();
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+}
+
+
+// Delete Product Modal
+$(document).on('click', '.delete-product-btn', function () {
+    var productId = $(this).data('id');
+    $.ajax({
+        url: '?route=delete-product',
+        method: 'POST',
+        data: { ProductId: productId },
+        success: function (response) {
+            console.log(response);
+            location.reload();
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+});
 

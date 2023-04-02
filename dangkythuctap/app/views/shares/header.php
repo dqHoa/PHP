@@ -29,7 +29,7 @@
         <li><a href="?route=view-cart">Cart</a></li>
       </ul>
       <!-- Search Bar -->
-      <form class="navbar-form navbar-right" role="search">
+      <form action="?route=search" class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search">
         </div>

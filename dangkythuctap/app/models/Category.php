@@ -11,7 +11,7 @@ class Category {
     global $pdo;
 
     $stmt = $pdo->prepare('SELECT * FROM category WHERE CategoryId = :categoryid');
-    $stmt->bindParam(':cateogryid', $categoryid);
+    $stmt->bindParam(':categoryid', $categoryid);
     $stmt->execute();
     return $stmt->fetch(PDO::FETCH_ASSOC);
   }

@@ -18,13 +18,15 @@ class CategoryController
             $isSuccess = Category::create($categoryname);
             echo json_encode(['success' => $isSuccess]);
         }
-
     }
 
     function editCategory()
     {
-        $category = Category::getAll();
-        require_once('../app/views/admin/category/show-category.php');
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+            $categoryid = $_POST['id'];
+            $isSuccess = Category::find($categoryid);
+            echo json_encode(['success' => $isSuccess]);
+        }
     }
 
     function updateCategory()

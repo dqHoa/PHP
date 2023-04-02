@@ -1,3 +1,7 @@
 .card {
     border: 1px solid #ccc;
   }
+
+.card-img-top {
+  width: 212.5px;
+}
